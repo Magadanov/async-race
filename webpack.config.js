@@ -1,12 +1,12 @@
-const path = require("path");
-const { merge } = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const EslintPlugin = require("eslint-webpack-plugin");
+const path = require('path');
+const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const EslintPlugin = require('eslint-webpack-plugin');
 
 const baseConfig = {
-    entry: path.resolve(__dirname, "./src/index"),
-    mode: "development",
+    entry: path.resolve(__dirname, './src/index'),
+    mode: 'development',
     module: {
         rules: [
             {
@@ -14,50 +14,46 @@ const baseConfig = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: "babel-loader",
+                        loader: 'babel-loader',
                     },
                 ],
             },
             {
                 test: /\.(sa|sc|c)ss$/i,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-                use: ["file-loader"],
+                use: ['file-loader'],
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/i,
-                type: "asset/inline",
+                type: 'asset/inline',
             },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Async Race",
+            title: 'Async Race',
         }),
-        new EslintPlugin({ extensions: [".ts", ".tsx", ".js", ".jsx"] }),
+        new EslintPlugin({ extensions: ['.ts', '.tsx', '.js', '.jsx'] }),
         new CleanWebpackPlugin(),
     ],
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".jsx"],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     output: {
-        filename: "index.js",
-        path: path.resolve(__dirname, "dist"),
+        filename: 'index.js',
+        path: path.resolve(__dirname, 'dist'),
     },
-    devtool: "inline-source-map",
-    devServer: {
-        static: path.resolve(__dirname, "./dist"),
-        hot: true,
-    },
+    devtool: 'inline-source-map',
 };
 
 module.exports = ({ mode }) => {
-    const isProductionMode = mode === "prod";
+    const isProductionMode = mode === 'prod';
     const envConfig = isProductionMode
-        ? require("./webpack.prod.config")
-        : require("./webpack.dev.config");
+        ? require('./webpack.prod.config')
+        : require('./webpack.dev.config');
 
     return merge(baseConfig, envConfig);
 };
