@@ -13,7 +13,6 @@ export default function App() {
                 <div className="main-content">
                     <Routes>
                         <Route index Component={GaragePage} />
-                        <Route path="/garage" Component={GaragePage} />
                         <Route path="/winners" Component={WinnersPage} />
                     </Routes>
                 </div>

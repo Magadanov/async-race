@@ -16,7 +16,7 @@ export default function Header() {
             <div className="navbar">
                 <div className="nav nav-garage">
                     <Link
-                        to="/garage"
+                        to="/"
                         className={`nav-link ${location.pathname.match(garageRegex) ? 'active' : ''}`}
                     >
                         Garage <FaCar />
