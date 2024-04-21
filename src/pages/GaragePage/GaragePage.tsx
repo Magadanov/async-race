@@ -55,6 +55,7 @@ export default function GaragePage() {
                     selectedCar={selectedCar}
                     handleCarUpdate={handleCarUpdate}
                     handleCarCreate={handleCarCreate}
+                    refreshData={refreshData}
                 />
             </div>
             <div className="content">

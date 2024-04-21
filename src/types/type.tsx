@@ -1,3 +1,5 @@
-type PathType = 'garage' | 'winners';
+export type PathType = 'garage' | 'winners';
 
-export default PathType;
+export type CarModels = {
+    [key: string]: string[];
+};

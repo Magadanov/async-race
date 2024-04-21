@@ -1,3 +1,6 @@
+@use '../../styles/colors.scss';
+@use '../../styles/buttons.scss';
+
 .content-header__menu {
     display: flex;
     flex-flow: column nowrap;
@@ -7,5 +10,20 @@
         display: flex;
         flex-flow: row wrap;
         gap: 30px;
+    }
+
+    .menu-buttons {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 20px;
+    }
+
+    .btn {
+        @include buttons.button();
+        padding: 5px;
+    }
+
+    .generate-btn {
+        @include buttons.button-color(colors.$GENERATE_BUTTON_BOX_SHADOW_COLOR);
     }
 }
