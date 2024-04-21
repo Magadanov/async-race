@@ -6,6 +6,11 @@
     flex-flow: row nowrap;
     gap: 10px;
 
+    &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
     .input-field {
         border-radius: 5px;
     }

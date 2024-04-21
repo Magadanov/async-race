@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-export default function usePaginate(url: string, limit: number) {
+export default function usePaginate(
+    url: string,
+    limit: number,
+    updatePage: boolean
+) {
     const [searchParams] = useSearchParams();
     const queryPage = Number(searchParams.get('page')) || 1;
 
@@ -33,7 +37,7 @@ export default function usePaginate(url: string, limit: number) {
             .catch((error: Error) => {
                 throw new Error(error.message);
             });
-    }, [queryPage, limit, url]);
+    }, [queryPage, limit, url, updatePage]);
 
     return result;
 }

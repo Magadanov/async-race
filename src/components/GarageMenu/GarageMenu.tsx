@@ -1,22 +1,26 @@
 import React from 'react';
 import DataFrom from '../DataForm/DataForm';
 import './GarageMenu.scss';
+import { CarI } from '../../interfaces/interface';
 
-export default function GarageMenu() {
+interface GarageMenuI {
+    selectedCar: CarI | null;
+    handleCarUpdate: (updatedCar: CarI) => void;
+    handleCarCreate: (newCar: CarI) => void;
+}
+
+export default function GarageMenu(props: GarageMenuI) {
     return (
         <div className="content-header__menu">
             <div className="menu-input-forms">
                 <DataFrom
                     buttonText="Create"
-                    handleSubmit={() => {
-                        console.log('sda');
-                    }}
+                    handleSubmit={props.handleCarCreate}
                 />
                 <DataFrom
                     buttonText="Update"
-                    handleSubmit={() => {
-                        console.log('sda');
-                    }}
+                    value={props?.selectedCar}
+                    handleSubmit={props.handleCarUpdate}
                 />
             </div>
         </div>

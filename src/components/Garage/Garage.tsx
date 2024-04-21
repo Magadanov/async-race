@@ -4,11 +4,17 @@ import Car from '../Car/Car';
 import { GarageComponentI } from '../../interfaces/interface';
 
 export default function Garage(props: GarageComponentI) {
-    console.log(props.data);
     return (
         <div className="garage">
             {props.data.map((car, index) => {
-                return <Car key={index} data={car} />;
+                return (
+                    <Car
+                        key={index}
+                        data={car}
+                        handleSelect={props.handleCarSelect}
+                        handleDelete={props.handleCarDelete}
+                    />
+                );
             })}
         </div>
     );
