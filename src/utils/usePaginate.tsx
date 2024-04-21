@@ -1,11 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-export default function usePaginate(
-    url: string,
-    limit: number,
-    updatePage: boolean
-) {
+export default function usePaginate(url: string, limit: number) {
+    console.log('ad');
     const [searchParams] = useSearchParams();
     const queryPage = Number(searchParams.get('page')) || 1;
 
@@ -17,7 +14,7 @@ export default function usePaginate(
         total: 0,
     });
 
-    useEffect(() => {
+    const refreshData = useCallback(() => {
         fetch(`http://localhost:3000/${url}?_page=${queryPage}&_limit=${limit}`)
             .then((res) => {
                 const total = parseInt(res.headers.get('X-Total-Count') || '0');
@@ -25,11 +22,12 @@ export default function usePaginate(
                 return res.json().then((data) => ({ data, total, page }));
             })
             .then(({ data, total, page }) => {
+                const nextPage = Math.ceil(total / limit);
                 setResult((prevState) => ({
                     ...prevState,
                     data,
                     page,
-                    nextPage: page + 1,
+                    nextPage: Math.min(page + 1, nextPage),
                     prevPage: Math.max(1, page - 1),
                     total,
                 }));
@@ -37,7 +35,11 @@ export default function usePaginate(
             .catch((error: Error) => {
                 throw new Error(error.message);
             });
-    }, [queryPage, limit, url, updatePage]);
+    }, [queryPage, limit, url]);
 
-    return result;
+    useEffect(() => {
+        refreshData();
+    }, [refreshData]);
+
+    return { ...result, refreshData };
 }

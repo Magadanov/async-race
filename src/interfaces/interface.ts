@@ -19,9 +19,9 @@ export interface ViewHeaderI {
 export interface PaginationI {
     data: CarI[] | WinnerI[];
     page: number;
-    limit: number;
     nextPage: number;
     prevPage: number;
+    total: number;
 }
 
 export interface DataFromI {

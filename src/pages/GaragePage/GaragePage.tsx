@@ -8,17 +8,16 @@ import { CarI } from '../../interfaces/interface';
 import updateApi from '../../api/updateApi';
 import createApi from '../../api/createApi';
 import deleteApi from '../../api/deleteApi';
+import Pagination from '../../components/Pagination/Pagiantion';
 
 export default function GaragePage() {
     const path = 'garage';
     const pageLimit = 7;
-    const [updatePage, setUpdatePage] = useState(false);
-    const { data, page, nextPage, prevPage, total } = usePaginate(
+    const { data, page, nextPage, prevPage, total, refreshData } = usePaginate(
         path,
-        pageLimit,
-        updatePage
+        pageLimit
     );
-    console.log(data, nextPage, prevPage);
+    console.log(data, page, 'next', nextPage, 'prev', prevPage);
     const [selectedCar, setSelectedCar] = useState<CarI | null>(null);
 
     const handleCarSelect = (car: CarI) => {
@@ -27,20 +26,21 @@ export default function GaragePage() {
 
     const handleCarCreate = (newCar: CarI) => {
         const { name, color } = newCar;
-        setUpdatePage(!updatePage);
-        createApi({ path, body: { name, color } });
+        createApi({ path, body: { name, color } }).then(() => refreshData());
     };
 
     const handleCarUpdate = (carUpdate: CarI) => {
         const { id, name, color } = carUpdate;
         setSelectedCar(null);
-        setUpdatePage(!updatePage);
-        updateApi({ id: id!, path, body: { name, color } });
+        updateApi({ id: id!, path, body: { name, color } }).then(() =>
+            refreshData()
+        );
     };
     const handleCarDelete = (carId: number) => {
-        setUpdatePage(!updatePage);
-        deleteApi({ path, id: carId });
-        deleteApi({ path: 'winners', id: carId });
+        deleteApi({ path, id: carId }).then(() => refreshData());
+        deleteApi({ path: 'winners', id: carId }).catch((error: Error) => {
+            throw new Error(error.message);
+        });
     };
 
     return (
@@ -64,6 +64,7 @@ export default function GaragePage() {
                     handleCarDelete={handleCarDelete}
                 />
             </div>
+            <Pagination page={page} nextPage={nextPage} prevPage={prevPage} />
         </>
     );
 }
