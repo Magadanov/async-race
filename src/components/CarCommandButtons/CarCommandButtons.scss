@@ -1,0 +1,42 @@
+@use '../../styles/buttons.scss';
+@use '../../styles/colors.scss';
+
+.garage-item__command-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    padding: 15px 0;
+
+    .action-buttons,
+    .control-buttons {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 20px;
+
+        .btn {
+            @include buttons.button();
+        }
+
+        .select-btn {
+            @include buttons.button-color(
+                colors.$SELECT_BUTTON_BOX_SHADOW_COLOR
+            );
+        }
+
+        .delete-btn {
+            @include buttons.button-color(
+                colors.$DELETE_BUTTON_BOX_SHADOW_COLOR
+            );
+        }
+
+        .start-btn {
+            @include buttons.button-color(
+                colors.$START_BUTTON_BOX_SHADOW_COLOR
+            );
+        }
+
+        .stop-btn {
+            @include buttons.button-color(colors.$STOP_BUTTON_BOX_SHADOW_COLOR);
+        }
+    }
+}

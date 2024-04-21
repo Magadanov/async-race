@@ -19,7 +19,25 @@ export interface ViewHeaderI {
 export interface PaginationI {
     data: CarI[] | WinnerI[];
     page: number;
-    limit: number;
     nextPage: number;
     prevPage: number;
+    total: number;
+}
+
+export interface DataFromI {
+    value?: CarI | null;
+    handleSubmit: (car: CarI) => void;
+    buttonText: string;
+}
+
+export interface GarageComponentI {
+    data: CarI[];
+    handleCarSelect: (car: CarI) => void;
+    handleCarDelete: (carId: number) => void;
+}
+
+export interface CarComponentI {
+    data: CarI;
+    handleSelect: (car: CarI) => void;
+    handleDelete: (carId: number) => void;
 }

@@ -1,0 +1,38 @@
+@use '../../styles/colors.scss';
+@use '../../styles/buttons.scss';
+
+.input-form {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+
+    &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .input-field {
+        border-radius: 5px;
+    }
+
+    .input-text {
+        font-size: 1rem;
+        padding: 10px 5px;
+    }
+
+    .input-color {
+        align-self: center;
+    }
+
+    .btn {
+        @include buttons.button();
+    }
+
+    .input-btn__create {
+        @include buttons.button-color(colors.$CREATE_BUTTON_BOX_SHADOW_COLOR);
+    }
+
+    .input-btn__update {
+        @include buttons.button-color(colors.$UPDATE_BUTTON_BOX_SHADOW_COLOR);
+    }
+}
