@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import useQueryPage from './useQueryPage';
 
 export default function usePaginate(url: string, limit: number) {
-    console.log('ad');
-    const [searchParams] = useSearchParams();
-    const queryPage = Number(searchParams.get('page')) || 1;
+    const queryPage = useQueryPage(url);
 
     const [result, setResult] = useState({
         data: [],

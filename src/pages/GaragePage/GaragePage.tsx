@@ -9,6 +9,7 @@ import updateApi from '../../api/updateApi';
 import createApi from '../../api/createApi';
 import deleteApi from '../../api/deleteApi';
 import Pagination from '../../components/Pagination/Pagiantion';
+import getSelectedCarSaved from '../../utils/getSavedSelectedCar';
 
 export default function GaragePage() {
     const path = 'garage';
@@ -17,19 +18,24 @@ export default function GaragePage() {
         path,
         pageLimit
     );
-    console.log(data, page, 'next', nextPage, 'prev', prevPage);
-    const [selectedCar, setSelectedCar] = useState<CarI | null>(null);
+    const selectedCarSaved = getSelectedCarSaved('Update_car');
+    const [selectedCar, setSelectedCar] = useState<CarI | null>(
+        selectedCarSaved
+    );
 
     const handleCarSelect = (car: CarI) => {
+        sessionStorage.setItem('Update_car', JSON.stringify(car));
         setSelectedCar(car);
     };
 
     const handleCarCreate = (newCar: CarI) => {
+        sessionStorage.removeItem('Create_car');
         const { name, color } = newCar;
         createApi({ path, body: { name, color } }).then(() => refreshData());
     };
 
     const handleCarUpdate = (carUpdate: CarI) => {
+        sessionStorage.removeItem('Update_car');
         const { id, name, color } = carUpdate;
         setSelectedCar(null);
         updateApi({ id: id!, path, body: { name, color } }).then(() =>

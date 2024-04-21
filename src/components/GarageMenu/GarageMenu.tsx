@@ -3,6 +3,7 @@ import DataFrom from '../DataForm/DataForm';
 import './GarageMenu.scss';
 import { CarI } from '../../interfaces/interface';
 import generateCars from '../../utils/generateCars';
+import getSelectedCarSaved from '../../utils/getSavedSelectedCar';
 
 interface GarageMenuI {
     selectedCar: CarI | null;
@@ -25,6 +26,7 @@ export default function GarageMenu(props: GarageMenuI) {
             <div className="menu-input-forms">
                 <DataFrom
                     buttonText="Create"
+                    value={getSelectedCarSaved('Create_car')}
                     handleSubmit={props.handleCarCreate}
                 />
                 <DataFrom

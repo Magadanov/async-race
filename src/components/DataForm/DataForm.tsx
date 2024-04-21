@@ -3,6 +3,7 @@ import { DataFromI } from '../../interfaces/interface';
 import './DataForm.scss';
 
 export default function DataFrom(props: DataFromI) {
+    const { buttonText, value } = props;
     const filedClassName = props.buttonText.toLocaleLowerCase();
     const formClassName = ['input-form'];
     if (props.buttonText === 'Update' && !props.value) {
@@ -13,6 +14,18 @@ export default function DataFrom(props: DataFromI) {
     const [color, setColor] = useState(props?.value?.color || '#000000');
 
     useEffect(() => {
+        if (buttonText === 'Create')
+            sessionStorage.setItem(
+                `${buttonText}_car`,
+                JSON.stringify({
+                    id: value?.id,
+                    name,
+                    color,
+                })
+            );
+    }, [name, color, buttonText, value?.id]);
+
+    useEffect(() => {
         setName(props.value?.name || '');
         setColor(props.value?.color || '#000000');
     }, [props.value]);
@@ -21,6 +34,8 @@ export default function DataFrom(props: DataFromI) {
         if (!name.trim()) return;
         const id = props.value?.id;
         props.handleSubmit({ id, name, color });
+        setName('');
+        setColor('#000000');
     };
 
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
