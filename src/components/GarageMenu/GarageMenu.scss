@@ -1,0 +1,11 @@
+.content-header__menu {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 30px;
+
+    .menu-input-forms {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 30px;
+    }
+}

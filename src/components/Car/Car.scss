@@ -1,0 +1,27 @@
+.garage-item {
+    border-bottom: 1px dashed;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 30px;
+}
+
+.garage-item__car-race-container {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+
+    .car-icon,
+    .finish-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .car-icon {
+        margin-bottom: -10px;
+    }
+
+    .finish-icon {
+        position: absolute;
+        right: 100px;
+    }
+}

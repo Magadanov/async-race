@@ -23,3 +23,17 @@ export interface PaginationI {
     nextPage: number;
     prevPage: number;
 }
+
+export interface DataFromI {
+    value?: CarI;
+    handleSubmit: () => void;
+    buttonText: string;
+}
+
+export interface GarageComponentI {
+    data: CarI[];
+}
+
+export interface CarComponentI {
+    data: CarI;
+}

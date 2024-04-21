@@ -2,6 +2,8 @@ import React from 'react';
 import ViewHeader from '../../components/ViewHeader/ViewHeader';
 import './GaragePage.scss';
 import usePaginate from '../../utils/usePaginate';
+import GarageMenu from '../../components/GarageMenu/GarageMenu';
+import Garage from '../../components/Garage/Garage';
 
 export default function GaragePage() {
     const pageLimit = 7;
@@ -19,6 +21,10 @@ export default function GaragePage() {
                     currentPageNumber={page}
                     totalItems={total}
                 />
+                <GarageMenu />
+            </div>
+            <div className="content">
+                <Garage data={data} />
             </div>
         </>
     );
