@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CarCommandButtons.scss';
 
 interface CarCommandButtonsI {
@@ -9,6 +9,7 @@ interface CarCommandButtonsI {
 }
 
 export default function CarCommandButtons(props: CarCommandButtonsI) {
+    const [isStartClicked, setIsStartClicked] = useState(false);
     return (
         <div className="garage-item__command-buttons">
             <div className="action-buttons">
@@ -30,15 +31,21 @@ export default function CarCommandButtons(props: CarCommandButtonsI) {
             <div className="control-buttons">
                 <button
                     type="button"
-                    className="btn start-btn"
-                    onClick={props.onStart}
+                    className={`btn start-btn ${isStartClicked ? 'disabled' : ''}`}
+                    onClick={() => {
+                        setIsStartClicked(true);
+                        props.onStart();
+                    }}
                 >
                     A
                 </button>
                 <button
                     type="button"
-                    className="btn stop-btn"
-                    onClick={props.onStop}
+                    className={`btn stop-btn ${!isStartClicked ? 'disabled' : ''}`}
+                    onClick={() => {
+                        setIsStartClicked(false);
+                        props.onStop();
+                    }}
                 >
                     B
                 </button>
