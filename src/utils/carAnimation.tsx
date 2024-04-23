@@ -6,10 +6,11 @@ export default async function carAnimation(
     carId: number,
     car: HTMLDivElement,
     carSpeed: number,
-    containerWidth: number
+    containerWidth: number,
+    animationID: number,
+    setAnimationIDFunc: (animId: number) => void
 ) {
     let currentPoint = 0;
-    let animationID = 0;
 
     const stopCar = () => {
         cancelAnimationFrame(animationID);
@@ -23,6 +24,7 @@ export default async function carAnimation(
 
         if (carWidth < containerWidth) {
             animationID = requestAnimationFrame(animation);
+            setAnimationIDFunc(animationID);
         }
         if (carWidth >= containerWidth) {
             stopCar();

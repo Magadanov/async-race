@@ -5,7 +5,9 @@ import carAnimation from './carAnimation';
 export default async function startEngine(
     carId: number,
     raceContainer: HTMLDivElement,
-    car: HTMLDivElement
+    car: HTMLDivElement,
+    animationID: number,
+    setAnimationIDFunc: (animId: number) => void
 ) {
     const containerWidth = raceContainer.offsetWidth;
 
@@ -15,5 +17,12 @@ export default async function startEngine(
         CarEngineEnum.START
     );
 
-    carAnimation(carId, car, carSpeed, containerWidth);
+    carAnimation(
+        carId,
+        car,
+        carSpeed,
+        containerWidth,
+        animationID,
+        setAnimationIDFunc
+    );
 }
