@@ -45,3 +45,18 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .garage-item__command-buttons {
+        gap: 5px;
+        padding: 10px 0;
+        .action-buttons,
+        .control-buttons {
+            gap: 10px;
+
+            .btn {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
