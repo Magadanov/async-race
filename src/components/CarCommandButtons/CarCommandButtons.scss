@@ -15,6 +15,11 @@
 
         .btn {
             @include buttons.button();
+
+            &.disabled {
+                opacity: 0.5;
+                pointer-events: none;
+            }
         }
 
         .select-btn {
@@ -37,6 +42,21 @@
 
         .stop-btn {
             @include buttons.button-color(colors.$STOP_BUTTON_BOX_SHADOW_COLOR);
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .garage-item__command-buttons {
+        gap: 5px;
+        padding: 10px 0;
+        .action-buttons,
+        .control-buttons {
+            gap: 10px;
+
+            .btn {
+                font-size: 0.7rem;
+            }
         }
     }
 }
