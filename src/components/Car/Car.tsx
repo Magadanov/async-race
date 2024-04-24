@@ -29,6 +29,7 @@ export default function Car(props: CarComponentI) {
             raceContainer: raceContainerRef.current!,
             car: carRef.current!,
             setAnimationIDFunc,
+            setWinnerCar: props.setWinnerCar,
         });
     };
 
@@ -52,7 +53,7 @@ export default function Car(props: CarComponentI) {
                 <div className="car" ref={carRef}>
                     <PiCarProfileFill className="car-icon" color={color} />
                 </div>
-
+                <div className="car-name">{props.data.name}</div>
                 <GiFinishLine className="finish-icon" />
             </div>
         </div>

@@ -14,7 +14,7 @@ export default async function carAnimation(props: AnimationType) {
         cancelAnimationFrame(animationID);
         CarEngineApi(carId, CarEngineEnum.STOP);
     };
-
+    const startTime = performance.now();
     const animation = () => {
         currentPoint += carSpeed;
         car.style.transform = `translateX(${currentPoint}px)`;
@@ -25,6 +25,21 @@ export default async function carAnimation(props: AnimationType) {
             setAnimationIDFunc(animationID);
         }
         if (carWidth >= containerWidth) {
+            const endTime = performance.now();
+            const timeTaken = endTime - startTime;
+            const timeInSeconds = Number((timeTaken / 1000).toFixed(2));
+            props.setWinnerCar((prevCars) => {
+                if (!prevCars.length) {
+                    return [
+                        {
+                            id: props.carData.id!,
+                            name: props.carData.name,
+                            time: timeInSeconds,
+                        },
+                    ];
+                }
+                return prevCars;
+            });
             stopCar();
         }
     };

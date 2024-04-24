@@ -39,6 +39,7 @@ export interface GarageComponentI {
 export interface CarComponentI {
     data: CarI;
     isRace: boolean;
+    setWinnerCar: React.Dispatch<React.SetStateAction<WinnerCarI[]>>;
     handleSelect: (car: CarI) => void;
     handleDelete: (carId: number) => void;
 }
@@ -48,10 +49,17 @@ export interface StartEngineI {
     isRace: boolean;
     raceContainer: HTMLDivElement;
     car: HTMLDivElement;
+    setWinnerCar: React.Dispatch<React.SetStateAction<WinnerCarI[]>>;
     setAnimationIDFunc: (animId: number) => void;
 }
 
 export interface CarAnimationI {
     carSpeed: number;
     containerWidth: number;
+}
+
+export interface WinnerCarI {
+    id: number;
+    name: string;
+    time: number;
 }

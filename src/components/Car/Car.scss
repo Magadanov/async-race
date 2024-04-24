@@ -1,3 +1,5 @@
+@use '../../styles/colors.scss';
+
 .garage-item {
     border-bottom: 1px dashed;
     display: flex;
@@ -10,6 +12,16 @@
     display: flex;
     align-items: flex-end;
     position: relative;
+
+    .car-name {
+        color: colors.$CAR_NAME_COLOR;
+        font-size: 2rem;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     .car-icon,
     .finish-icon {
