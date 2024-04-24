@@ -25,6 +25,7 @@ export default function Car(props: CarComponentI) {
     const onStart = () => {
         startEngine({
             carData: props.data,
+            isRace: props.isRace,
             raceContainer: raceContainerRef.current!,
             car: carRef.current!,
             setAnimationIDFunc,
@@ -42,6 +43,7 @@ export default function Car(props: CarComponentI) {
                 onDelete={onDelete}
                 onStart={onStart}
                 onStop={onStop}
+                isRace={props.isRace}
             />
             <div
                 className="garage-item__car-race-container"

@@ -38,12 +38,14 @@ export interface GarageComponentI {
 
 export interface CarComponentI {
     data: CarI;
+    isRace: boolean;
     handleSelect: (car: CarI) => void;
     handleDelete: (carId: number) => void;
 }
 
 export interface StartEngineI {
     carData: CarI;
+    isRace: boolean;
     raceContainer: HTMLDivElement;
     car: HTMLDivElement;
     setAnimationIDFunc: (animId: number) => void;
