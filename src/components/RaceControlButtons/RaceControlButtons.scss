@@ -1,0 +1,21 @@
+@use '../../styles/buttons.scss';
+@use '../../styles/colors.scss';
+
+.race-control-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+
+    .btn {
+        @include buttons.button();
+        padding: 5px;
+    }
+
+    .race-btn {
+        @include buttons.button-color(colors.$RACE_BUTTON_COLOR);
+    }
+
+    .reset-btn {
+        @include buttons.button-color(colors.$RESET_BUTTON_COLOR);
+    }
+}

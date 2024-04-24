@@ -23,13 +23,14 @@ export default function Car(props: CarComponentI) {
     };
 
     const onStart = () => {
-        startEngine(
-            id!,
-            raceContainerRef.current!,
-            carRef.current!,
-            animationID,
-            setAnimationIDFunc
-        );
+        startEngine({
+            carData: props.data,
+            isRace: props.isRace,
+            raceContainer: raceContainerRef.current!,
+            car: carRef.current!,
+            setAnimationIDFunc,
+            setWinnerCar: props.setWinnerCar,
+        });
     };
 
     const onStop = () => {
@@ -42,7 +43,8 @@ export default function Car(props: CarComponentI) {
                 onSelect={onSelect}
                 onDelete={onDelete}
                 onStart={onStart}
-                onStop={onStop} // Pass onStop function to CarCommandButtons
+                onStop={onStop}
+                isRace={props.isRace}
             />
             <div
                 className="garage-item__car-race-container"
@@ -51,7 +53,7 @@ export default function Car(props: CarComponentI) {
                 <div className="car" ref={carRef}>
                     <PiCarProfileFill className="car-icon" color={color} />
                 </div>
-
+                <div className="car-name">{props.data.name}</div>
                 <GiFinishLine className="finish-icon" />
             </div>
         </div>

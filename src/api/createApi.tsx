@@ -2,7 +2,7 @@ import { CarI, WinnerI } from '../interfaces/interface';
 
 interface CreateApiI {
     path: 'garage' | 'winners';
-    body: Omit<CarI | WinnerI, 'id'>;
+    body: Omit<CarI, 'id'> | WinnerI;
 }
 
 export default function createApi(props: CreateApiI): Promise<void> {

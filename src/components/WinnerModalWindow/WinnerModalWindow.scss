@@ -1,0 +1,17 @@
+@use '../../styles/colors.scss';
+
+.winner-modal-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid colors.$WINNER_MODAL_WINDOW_COLOR;
+    border-radius: 10px;
+    box-shadow: 0 0 10px colors.$WINNER_MODAL_WINDOW_COLOR;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+}
