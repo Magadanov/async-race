@@ -12,9 +12,12 @@ interface CarCommandButtonsI {
 export default function CarCommandButtons(props: CarCommandButtonsI) {
     const [isStartClicked, setIsStartClicked] = useState(false);
     const startBtnRef = useRef<HTMLButtonElement | null>(null);
+    const stopBtnRef = useRef<HTMLButtonElement | null>(null);
     useEffect(() => {
         if (props.isRace) {
             startBtnRef.current?.click();
+        } else {
+            stopBtnRef.current?.click();
         }
     }, [props.isRace]);
     return (
@@ -49,6 +52,7 @@ export default function CarCommandButtons(props: CarCommandButtonsI) {
                 </button>
                 <button
                     type="button"
+                    ref={stopBtnRef}
                     className={`btn stop-btn ${!isStartClicked ? 'disabled' : ''}`}
                     onClick={() => {
                         setIsStartClicked(false);

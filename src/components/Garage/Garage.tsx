@@ -9,9 +9,12 @@ export default function Garage(props: GarageComponentI) {
     const onRace = () => {
         setIsRace(true);
     };
+    const onReset = () => {
+        setIsRace(false);
+    };
     return (
         <div className="garage-container">
-            <RaceControlButtons onRace={onRace} />
+            <RaceControlButtons onRace={onRace} onReset={onReset} />
             <div className="garage">
                 {props.data.map((car, index) => {
                     return (

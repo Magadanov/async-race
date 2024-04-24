@@ -3,6 +3,7 @@ import './RaceControlButtons.scss';
 
 interface RaceControlButtonsI {
     onRace: () => void;
+    onReset: () => void;
 }
 
 export default function RaceControlButtons(props: RaceControlButtonsI) {
@@ -14,6 +15,13 @@ export default function RaceControlButtons(props: RaceControlButtonsI) {
                 onClick={props.onRace}
             >
                 Race
+            </button>
+            <button
+                type="button"
+                className="btn reset-btn"
+                onClick={props.onReset}
+            >
+                Reset
             </button>
         </div>
     );

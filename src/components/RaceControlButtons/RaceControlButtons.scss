@@ -14,4 +14,8 @@
     .race-btn {
         @include buttons.button-color(colors.$RACE_BUTTON_COLOR);
     }
+
+    .reset-btn {
+        @include buttons.button-color(colors.$RESET_BUTTON_COLOR);
+    }
 }
