@@ -41,3 +41,15 @@ export interface CarComponentI {
     handleSelect: (car: CarI) => void;
     handleDelete: (carId: number) => void;
 }
+
+export interface StartEngineI {
+    carData: CarI;
+    raceContainer: HTMLDivElement;
+    car: HTMLDivElement;
+    setAnimationIDFunc: (animId: number) => void;
+}
+
+export interface CarAnimationI {
+    carSpeed: number;
+    containerWidth: number;
+}

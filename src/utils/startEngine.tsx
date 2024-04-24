@@ -1,15 +1,12 @@
 import { CarEngineEnum } from '../enums/enum';
+import { StartEngineI } from '../interfaces/interface';
 import calculateCarSpeed from './calculateCarSpeed';
 import carAnimation from './carAnimation';
 
-export default async function startEngine(
-    carId: number,
-    raceContainer: HTMLDivElement,
-    car: HTMLDivElement,
-    animationID: number,
-    setAnimationIDFunc: (animId: number) => void
-) {
+export default async function startEngine(props: StartEngineI) {
+    const { raceContainer } = props;
     const containerWidth = raceContainer.offsetWidth;
+    const carId = props.carData.id!;
 
     const carSpeed = await calculateCarSpeed(
         containerWidth,
@@ -17,12 +14,5 @@ export default async function startEngine(
         CarEngineEnum.START
     );
 
-    carAnimation(
-        carId,
-        car,
-        carSpeed,
-        containerWidth,
-        animationID,
-        setAnimationIDFunc
-    );
+    carAnimation({ ...props, carSpeed, containerWidth });
 }

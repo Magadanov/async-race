@@ -1,3 +1,5 @@
+import { CarAnimationI, StartEngineI } from '../interfaces/interface';
+
 export type PathType = 'garage' | 'winners';
 
 export type CarModels = {
@@ -16,3 +18,5 @@ type CarEngineDriveType = {
 };
 
 export type CarEngine = CarEngineControlType | CarEngineDriveType;
+
+export type AnimationType = StartEngineI & CarAnimationI;

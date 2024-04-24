@@ -23,13 +23,12 @@ export default function Car(props: CarComponentI) {
     };
 
     const onStart = () => {
-        startEngine(
-            id!,
-            raceContainerRef.current!,
-            carRef.current!,
-            animationID,
-            setAnimationIDFunc
-        );
+        startEngine({
+            carData: props.data,
+            raceContainer: raceContainerRef.current!,
+            car: carRef.current!,
+            setAnimationIDFunc,
+        });
     };
 
     const onStop = () => {
@@ -42,7 +41,7 @@ export default function Car(props: CarComponentI) {
                 onSelect={onSelect}
                 onDelete={onDelete}
                 onStart={onStart}
-                onStop={onStop} // Pass onStop function to CarCommandButtons
+                onStop={onStop}
             />
             <div
                 className="garage-item__car-race-container"
