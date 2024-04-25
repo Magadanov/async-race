@@ -1,0 +1,16 @@
+.content-header__page {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+
+    .content-header__page-name {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 10px;
+        font-size: 2rem;
+    }
+
+    .content-header__page-number {
+        font-size: 1.2rem;
+    }
+}
