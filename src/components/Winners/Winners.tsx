@@ -3,7 +3,6 @@ import './Winners.scss';
 import { WinnersComponentI } from '../../interfaces/interface';
 
 export default function Winners(props: WinnersComponentI) {
-    console.log(props);
     return (
         <div className="winner-container">
             <table className="winner-table">

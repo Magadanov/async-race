@@ -2,6 +2,7 @@ import React from 'react';
 import ViewHeader from '../../components/ViewHeader/ViewHeader';
 import usePaginate from '../../utils/usePaginate';
 import Winners from '../../components/Winners/Winners';
+import Pagination from '../../components/Pagination/Pagiantion';
 
 export default function WinnersPage() {
     const pageLimit = 10;
@@ -9,7 +10,6 @@ export default function WinnersPage() {
         'winners',
         pageLimit
     );
-    console.log(data, nextPage, prevPage);
 
     return (
         <>
@@ -23,6 +23,7 @@ export default function WinnersPage() {
             <div className="content">
                 <Winners data={data} />
             </div>
+            <Pagination page={page} nextPage={nextPage} prevPage={prevPage} />
         </>
     );
 }
