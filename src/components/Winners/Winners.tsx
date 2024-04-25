@@ -6,6 +6,24 @@ import WinnersTable from '../WinnersTable/WinnersTable';
 
 export default function Winners(props: WinnersComponentI) {
     const [winnersData, setWinnersData] = useState<(CarI & WinnerI)[]>([]);
+    const [sortConfig, setSortConfig] = useState<{
+        key: string;
+        direction: string;
+    }>({ key: '', direction: '' });
+
+    const sortOrder = (columnName: string) => {
+        let direction = '';
+        if (sortConfig.key !== columnName) direction = 'asc';
+        else {
+            if (sortConfig.direction === 'asc') direction = 'desc';
+            if (sortConfig.direction === 'desc') direction = '';
+            if (sortConfig.direction === '') direction = 'asc';
+        }
+        setSortConfig({ key: columnName, direction });
+        props.setQueryString(
+            direction && `&_sort=${columnName}&_order=${direction}`
+        );
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,7 +45,7 @@ export default function Winners(props: WinnersComponentI) {
 
     return (
         <div className="winner-container">
-            <WinnersTable winnersData={winnersData} />
+            <WinnersTable winnersData={winnersData} sortOrder={sortOrder} />
         </div>
     );
 }

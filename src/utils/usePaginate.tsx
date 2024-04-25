@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import useQueryPage from './useQueryPage';
 
-export default function usePaginate(url: string, limit: number) {
+export default function usePaginate(
+    url: string,
+    limit: number,
+    queryString?: string
+) {
     const queryPage = useQueryPage(url);
 
     const [result, setResult] = useState({
@@ -13,7 +17,9 @@ export default function usePaginate(url: string, limit: number) {
     });
 
     const refreshData = useCallback(() => {
-        fetch(`http://localhost:3000/${url}?_page=${queryPage}&_limit=${limit}`)
+        fetch(
+            `http://localhost:3000/${url}?_page=${queryPage}&_limit=${limit}${queryString || ''}`
+        )
             .then((res) => {
                 const total = parseInt(res.headers.get('X-Total-Count') || '0');
                 const page = queryPage;
@@ -32,7 +38,7 @@ export default function usePaginate(url: string, limit: number) {
             .catch((error: Error) => {
                 throw new Error(error.message);
             });
-    }, [queryPage, limit, url]);
+    }, [queryPage, limit, url, queryString]);
 
     useEffect(() => {
         refreshData();

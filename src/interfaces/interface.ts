@@ -66,4 +66,5 @@ export interface WinnerCarI {
 
 export interface WinnersComponentI {
     data: WinnerI[];
+    setQueryString: React.Dispatch<React.SetStateAction<string>>;
 }
