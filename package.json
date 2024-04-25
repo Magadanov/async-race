@@ -70,7 +70,7 @@
         "src/**/*.{tsx,jsx,json,css,scss,md,html}": "npm run format"
     },
     "validate-branch-name": {
-        "pattern": "^((main|master|async-race)|(feat|refactor|init|docs)/AR-[0-9]{2}_[a-zA-Z0-9_-]+)$",
+        "pattern": "^((main|master|async-race)|(feat|fix|refactor|init|docs)/AR-[0-9]{2}_[a-zA-Z0-9_-]+)$",
         "errorMsg": "write correct branch name"
     }
 }
