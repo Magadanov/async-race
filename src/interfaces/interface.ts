@@ -63,3 +63,7 @@ export interface WinnerCarI {
     name: string;
     time: number;
 }
+
+export interface WinnersComponentI {
+    data: WinnerI[];
+}

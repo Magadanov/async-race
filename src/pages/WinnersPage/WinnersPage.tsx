@@ -1,6 +1,7 @@
 import React from 'react';
 import ViewHeader from '../../components/ViewHeader/ViewHeader';
 import usePaginate from '../../utils/usePaginate';
+import Winners from '../../components/Winners/Winners';
 
 export default function WinnersPage() {
     const pageLimit = 10;
@@ -18,6 +19,9 @@ export default function WinnersPage() {
                     currentPageNumber={page}
                     totalItems={total}
                 />
+            </div>
+            <div className="content">
+                <Winners data={data} />
             </div>
         </>
     );
