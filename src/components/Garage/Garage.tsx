@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Garage.scss';
 import Car from '../Car/Car';
 import { GarageComponentI, WinnerCarI } from '../../interfaces/interface';
@@ -18,6 +18,10 @@ export default function Garage(props: GarageComponentI) {
         setWinnerCar([]);
     };
 
+    useEffect(() => {
+        setIsRace(false);
+        setWinnerCar([]);
+    }, [props.data]);
     return (
         <div className="garage-container">
             <RaceControlButtons onRace={onRace} onReset={onReset} />
