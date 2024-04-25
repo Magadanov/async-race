@@ -63,3 +63,8 @@ export interface WinnerCarI {
     name: string;
     time: number;
 }
+
+export interface WinnersComponentI {
+    data: WinnerI[];
+    setQueryString: React.Dispatch<React.SetStateAction<string>>;
+}
