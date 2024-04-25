@@ -16,6 +16,15 @@
  - Prettier and ESLint Configuration (10 points) __10/10__
  - Overall Code Quality (35 points) 
 
+# How to run app 
+  - Go to async race localserver repo [link](https://github.com/mikhama/async-race-api)
+     - Clone this repo: $ git clone https://github.com/mikhama/async-race-api.git.
+     - Go to downloaded folder: $ cd async-race-api.
+     - Install dependencies: $ npm install.
+     - Start server: $ npm start.
+  - Code link PR [Async race #7](https://github.com/Magadanov/async-race/pull/7#:~:text=Code-,Async%20race%20%237,-Open)
+  - Deployed link [Async Race](https://662a286a5a854c8b6d8a36ab--amazing-pudding-0d4a3a.netlify.app/)
+
 # CheckList
 ## 🏁 Basic Structure (85 points)
 ### 1. View Configuration (30 points)
